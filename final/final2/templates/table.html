@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตารางข้อมูล</title>
+    <style>
+        body{
+            margin-top: 20px;
+        }
+        table{
+            border-collapse: collapse;
+            width: 100%;
+            padding: 20px 0;
+        }
+        th{
+            background-color: aquamarine;
+            font-weight: bold;
+        }
+        th,td{
+            border: 1px solid black;
+            padding: 8px;
+            text-align:left
+        }
+    </style>
+</head>
+<body>
+    <h2>ตารางข้อมูล</h2>
+    <table>
+        <tr>
+            <th>name</th>
+            <th>eng</th>
+            <th>summarize</th>
+            <th>thai</th>
+            <th>priority</th>
+        </tr>
+        {%if data%}
+            {%for x in data%}
+                <tr>
+                    <td>{{x[1]}}</td>
+                    <td>{{x[2]}}</td>
+                    <td>{{x[3]}}</td>
+                    <td>{{x[4]}}</td>
+                    <td>{{x[5]}}</td>
+                </tr>
+            {%endfor%}
+        {%endif%}
+    </table>
+</body>
+</html>

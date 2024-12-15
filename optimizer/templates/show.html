@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <title>Show</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .substat {
+            font-size: 0.9rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+            {% if data %}
+                {% for list in data %}
+                    {% for item in list %}
+                    <div class="col mb-4">
+                        <div class="card h-100">
+                            <img src="/static/placeholder.png" class="card-img-top" alt="Item Image">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">{{item.name}}</h5>
+                                <h5 class="card-title">{{item.main_stat.name}} {{item.main_stat.value}} </h5>
+                                <ul class="list-unstyled">
+                                    {% for substat in item.sub_stats %}
+                                        <li class="substat">{{ substat.name }}: {{ substat.value }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <!-- <button type="button">delete</button> -->
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

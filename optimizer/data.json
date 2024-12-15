@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Flower",
+    "set_name": "Archaic Petra",
+    "artifact_type": "Flower",
+    "main_stat": { "name": "HP", "value": 4780 },
+    "sub_stats": [
+      { "name": "HP%", "value": "10" },
+      { "name": "DEF%", "value": "10" },
+      { "name": "ATK%", "value": "10" },
+      { "name": "HP", "value": "0" }
+    ]
+  },
+  {
+    "name": "Flower",
+    "set_name": "Archaic Petra",
+    "artifact_type": "Flower",
+    "main_stat": { "name": "HP", "value": 4780 },
+    "sub_stats": [
+      { "name": "HP", "value": "0" },
+      { "name": "HP", "value": "0" },
+      { "name": "CR", "value": "10" },
+      { "name": "CD", "value": "20" }
+    ]
+  },
+  {
+    "name": "Feather",
+    "set_name": "Archaic Petra",
+    "artifact_type": "Feather",
+    "main_stat": { "name": "HP", "value": 4780 },
+    "sub_stats": [
+      { "name": "HP", "value": "5" },
+      { "name": "HP", "value": "5" },
+      { "name": "HP", "value": "5" },
+      { "name": "HP", "value": "5" }
+    ]
+  },
+  {
+    "name": "Feather",
+    "set_name": "Archaic Petra",
+    "artifact_type": "Feather",
+    "main_stat": { "name": "HP", "value": 4780 },
+    "sub_stats": [
+      { "name": "HP", "value": "5" },
+      { "name": "HP", "value": "5" },
+      { "name": "HP", "value": "5" },
+      { "name": "HP", "value": "5" }
+    ]
+  },
+  {
+    "name": "Feather",
+    "set_name": "Archaic Petra",
+    "artifact_type": "Feather",
+    "main_stat": { "name": "HP", "value": 4780 },
+    "sub_stats": [
+      { "name": "HP", "value": "5" },
+      { "name": "HP", "value": "5" },
+      { "name": "HP", "value": "5" },
+      { "name": "HP", "value": "5" }
+    ]
+  },
+  {
+    "name": "Flower",
+    "set_name": "Archaic Petra",
+    "artifact_type": "Flower",
+    "main_stat": { "name": "Hydro", "value": "46.6%" },
+    "sub_stats": [
+      { "name": "CR", "value": "10" },
+      { "name": "CD", "value": "15" },
+      { "name": "ER", "value": "10" },
+      { "name": "ATK%", "value": "10" }
+    ]
+  }
+]

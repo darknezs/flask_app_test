@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Graph</title>
+    <link rel="stylesheet" href="static/nav.css">
+    <style>
+                body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding-top: 100px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .center{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <button onclick="document.location='/upload'">Upload</button>
+        <button onclick="document.location='/show'">Show</button>
+        <button onclick="document.location='/graph'">Graph</button>
+    </div>
+    <h1>Priority method Graph</h1>
+    
+    <!-- Display the graph from the /plot.png route -->
+    <div class="center">
+        {% if plot_url %}
+            <img src="{{plot_url}}" alt="Priority Graph">
+        {%endif%}
+    </div>
+
+</body>
+</html>

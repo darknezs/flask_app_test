@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>upload</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f9f9f9;
+            height: 75vh;
+        }
+        .container{
+            padding: 20px;
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 4px;
+        }
+        button{
+            color: #fff;
+            background-color: tomato;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover{
+            background-color: rgb(212, 71, 255);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>choose file to upload (.xls/.xlsx)</h2>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" id="file" accept=".xls,.xlsx">
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+</body>
+</html>

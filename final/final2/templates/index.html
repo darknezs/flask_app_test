@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" onclick=hello()>test</button>
+    <script>
+        async function hello() {
+            let name = 'jack'
+            let age = 23
+            const res = await fetch('/api/v1',
+                {
+                    method : "post",
+                    headers : {'content-type':'application/json'},
+                    body : JSON.stringify({name})
+                })
+            const data = await res.json()
+            if(res.ok){
+                console.log(data.msg);
+            }else{
+                alert('somthing went wrong')
+            }
+        }
+    </script>
+</body>
+</html>

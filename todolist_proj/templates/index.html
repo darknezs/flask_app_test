@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding-top: 100px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        /* Strikethrough styling */
+        .strikethrough {
+            text-decoration: line-through;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <h1>My To Do List</h1>
+    <table>
+        <tr>
+            <th>ลำดับ</th>
+            <th>วันที่</th>
+            <th>รายละเอียด</th>
+            <th>Done</th>
+        </tr>
+        {% for x in data %}
+        <tr>
+            <td><p>{{ loop.index }}</p></td>
+            <td><p>{{x[1]}}</p></td>
+            <td><p id="descID{{ x[0] }}">{{x[2]}} </p></td>
+            {% if x[3] == 1 %}
+                <td><input type="checkbox" id="cb{{ x[0] }}" name="cb{{ x[0] }}" value="cb{{ x[0] }}" checked></td>
+            {% else %}
+                <td><input type="checkbox" id="cb{{ x[0] }}" name="cb{{ x[0] }}" value="cb{{ x[0] }}"></td>
+            {% endif %}
+
+        </tr>
+        {%endfor%}
+
+    </table>
+    
+    <script>
+            // Select all checkboxes with IDs starting with "cb"
+            const checkboxes = document.querySelectorAll("input[type='checkbox'][id^='cb']");
+
+            // Function to apply or remove strikethrough
+            function toggleStrikethrough(checkbox) {
+                const textId = `descID${checkbox.id.substring(2)}`; // Match corresponding text element ID
+                
+                const text = document.getElementById(textId);
+
+                if (!text) {
+                    console.error(`No text element found with ID: ${textId}`);
+                    return; // Exit if corresponding text element is not found
+                }
+
+                if (checkbox.checked) {
+                    text.classList.add("strikethrough");
+                } else {
+                    text.classList.remove("strikethrough");
+                }
+            }
+
+            // Add event listeners to each checkbox
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener("change", () => toggleStrikethrough(checkbox));
+
+                // Initial call to set strikethrough if the checkbox is pre-checked
+                toggleStrikethrough(checkbox);
+            });
+
+    </script>
+</body>
+</html>

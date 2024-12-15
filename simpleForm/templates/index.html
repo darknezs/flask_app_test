@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <title>KPOPBD</title>
+    <style>
+        body {
+            margin: 20px;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>SHOW SECTION</h2>
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <th>Band</th>
+                <th>Birthday</th>
+                <th>Modifier</th>
+            </tr>
+            {%if data%} 
+                {%for x in data%}
+                <tr>
+                    <!-- <h3>{{x[3].strftime("%d")}}/{{x[3].strftime("%m")}}/{{x[3].strftime("%Y")}}</h3> -->
+                    <td contenteditable="true" id="name{{x[0]}}">{{x[2]}}</td>
+                    <td contenteditable="true" id="band{{x[0]}}">{{x[1]}}</td>
+                    <!-- <td contenteditable="true" id="bd{{x[0]}}">{{x[3]}}</td> -->
+                    <td contenteditable="true" id="bd{{x[0]}}">{{x[3].strftime("%d")}}/{{x[3].strftime("%m")}}/{{x[3].strftime("%Y")}}</td>
+
+                    <td>
+                        <button type="button" class="btn btn-info" onclick="updateRow('{{x[0]}}')">Update</button>
+                        <button type="button" class="btn btn-danger" onclick="deleteRow('{{x[0]}}')">Delete</button>
+                    </td>
+                </tr>
+                {%endfor%} 
+            {%endif%}
+        </table>
+    </div>
+    <div class="container" my-2 pd-2>
+        <h2>Add Birthday</h2>
+        <form action="/formAdd" method="POST">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Name" />
+            </div>
+            <div class="form-group">
+                <label for="band">Band</label>
+                <input type="text" class="form-control" id="band" name="band" placeholder="Band" />
+            </div>
+            <div class="form-group">
+                <label for="bd">Birthday</label>
+                <input type="date" class="form-control" id="bd" name="bd" placeholder="Birthday" />
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+    </div>
+</body>
+<script>
+    function getValfromTd(id) {
+        let name = document.getElementById('name' + id).innerHTML
+        let band = document.getElementById('band' + id).innerHTML
+        let bd = document.getElementById('bd' + id).innerHTML
+
+        console.log(name, band, bd);
+        document.location = '/update/' + id + '/' + name + '/' + band + '/' + bd
+    }
+
+    async function updateRow(id) {
+        const name = document.getElementById('name' + id).textContent.trim()
+        const band = document.getElementById('band' + id).textContent.trim()
+        const bd = document.getElementById('bd' + id).textContent.trim()
+
+        if (!name || !band || !bd) {
+            alert('all fileds must be filled')
+            return;
+        }
+
+        // fetch('/update', {
+        //     method: 'POST',
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify({ id, name, band, bd })
+        // }).then(response => {
+        //     if (response.ok) {
+        //         alert('update susscessful!')
+        //     } else {
+        //         alert('update failed!')
+        //     }
+        //     location.reload() //Reload table to fetch updated data
+        // }).catch(err => console.error('Error:', err))
+
+        try{
+            const res = await fetch('/update',{
+                method : 'POST',
+                headers : {'content-type' : 'application/json'},
+                body : JSON.stringify({id, name, band, bd})
+            })
+            const data = await res.json()
+
+            if(res.ok){
+                alert('update susscessful!')
+            }else{
+                alert('update failed!')
+            }
+            location.reload() //Reload table to fetch updated data
+            
+        }catch (error){
+            console.error('Error:', err)
+        }
+    }
+
+    async function deleteRow(id) {
+        if (!confirm('Are you sure you want to delete this row')) return;
+        let action = '/delete/' + id
+        // fetch(action, {
+        //     method: 'POST'
+        // }
+        // ).then(response => {
+        //     if (response.ok) {
+        //         alert('Delete complete');
+        //         location.reload();
+        //     } else {
+        //         alert('Delete Failed!!')
+        //     }
+        // }).catch(err => console.error('Error:', err))
+
+        try {
+            const res = await fetch(action,{method:'POST'})
+            const data = await res.json()
+            if(res.ok){
+                alert('Delete complete');
+                location.reload();
+            }else{
+                alert('Delete Failed!!')
+            }
+        } catch (error){
+            console.error("Error :", error);
+        }
+
+
+    }
+</script>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>practiseES6</title>
+  </head>
+  <body>
+    <button type="button" onclick="testtest()">testtest</button>
+    <button type="button" onclick="getUser()">user</button>
+  
+  </body>
+  <script>
+    async function testtest() {
+      let val = "abc";
+      // fetch("/testtest", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify(val),
+      // })
+      //   .then((response) => response.json())
+      //   .then((data) => {
+      //     console.log(data.message + " " + data.code);
+      //     // console.log(data.code);
+      //   })
+      //   .catch((error) => {
+      //     console.error("Error:", error);
+      //   });
+      
+      const res = await fetch('/testtest',{
+        method : 'POST',
+        headers :{"content-type":"application/json"},
+        body:JSON.stringify(val)
+      })
+      const data = await res.json()
+      if(res.ok){
+        console.log(data.message + " " + data.code);
+      }
+
+    }
+
+    async function getUser() {
+      const res = await fetch("/user",{method:"POST"});
+      const data = await res.json()
+      console.log(data.user);
+    }
+      
+  </script>
+</html>

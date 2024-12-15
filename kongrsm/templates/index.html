@@ -1,0 +1,65 @@
+{% import 'bootstrap/wtf.html' as wtf %}
+{%extends 'layout.html' %}
+{% block content%}
+
+<div class="container" my-2 pd-2>
+    <!-- <form method="POST" action="{{ url_for('index') }}"> -->
+        <!-- {{form.hidden_tag()}} -->
+        <!-- {{form.name.label}} -->
+        <!-- {{form.name}} -->
+        <!-- <br> -->
+        <!-- radio -->
+        <!-- {{form.gender.label}}{{form.gender()}} -->
+        <!-- dropdown -->
+        <!-- {{form.skill.label}}{{form.skill(class="form-control")}} -->
+        <!-- <br> -->
+        <!-- textarea  -->
+        <!-- {{form.address.label}}{{form.address(class="form-control")}} -->
+        <!-- <br> -->
+        <!-- <br> -->
+        <!-- boolean field  -->
+        <!-- {{form.isAccept}}{{form.isAccept.label}} -->
+ 
+
+      
+        <!-- <br> -->
+        
+         <!-- <br> -->
+         <!-- <br> -->
+        <!-- {{form.submit(class="btn btn-success")}} -->
+
+    <!-- </form> -->
+    {% for msg in get_flashed_messages()%}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{msg}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    {%endfor%}
+    {{wtf.quick_form(form)}}
+</div>
+<div class="container" my-2 pd-2>
+{% if session['name'] %}
+    <h2>คุณ {{session['name']}}</h2>
+    <h2>เพศ {{session['gender']}}</h2>
+    <h2>ความสามารถ {{session['skill']}}</h2>
+    <h2>ที่อยู่ {{session['address']}}</h2>
+    {%if session['isAccept']%}
+        <h2>ยอมรับเงื่อนไขการบริการ</h2>
+    {%else%}
+        <h2>ไม่ยอมรับเงื่อนไขการบริการ</h2>
+    {%endif%} 
+{%else%}
+    <h2>ไม่พบข้อมูล</h2>  
+{%endif%}
+</div>
+
+<script>
+    let btn = document.querySelector('.btn.btn-default')
+    console.log(btn);
+    btn.classList.remove('btn-default')
+    btn.classList.add('btn-success')
+</script>
+{%endblock%}
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>myChart</title>
+    <style>
+        .content{
+            margin: auto;
+            width: 50%;
+            border: 3px solid lightgreen;
+            padding: 10px;
+        } 
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div>
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>   
+</body>
+    <script>
+        const ctx = document.getElementById('myChart');
+        new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+            label: 'testtest',
+            data: [12, 19, 3, 5, 2, 3],
+            borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+            y: {
+                beginAtZero: true
+            }
+            }
+        }
+        });
+    </script>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHOW FROM DB</title>
+    <link rel="stylesheet" href="static/nav.css">
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding-top: 100px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+        .center {
+    text-align: center;
+}
+.center-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+    </style>
+</head>
+<div class="navbar">
+    <button onclick="document.location='/upload'">Upload</button>
+    <button onclick="document.location='/show'">Show</button>
+    <button onclick="document.location='/graph'">Graph</button>
+</div>
+<body>
+    <h1>SHOW FROM DB</h1>
+    <table id="data-table">
+        <tr>
+            <th>method_name</th>
+            <th>desc_eng</th>
+            <th>summarize</th>
+            <th>desc_th</th>        
+        </tr>
+        {% for x in data %}
+        <tr>
+            <input type="hidden" data-column="id" value="{{ x[0] }}">
+            <td contenteditable="true" data-column="method_name">{{ x[1] }}</td>
+            <td contenteditable="true" data-column="desc_eng">{{ x[2] }}</td>
+            <td contenteditable="true" data-column="summarize">{{ x[3] }}</td>
+            <td contenteditable="true" data-column="desc_th">{{ x[4] }}</td>
+        </tr>
+        {%endfor%}
+    </table>
+    <div class="center">
+        <button onclick=saveChanges() class="center-button">Save Change</button>
+    </div>
+
+    <script>
+        function saveChanges() {
+        const updatedData = Array.from(document.querySelectorAll("#data-table tr:not(:first-child)"))
+        .map(row => {
+            const cells = row.querySelectorAll('td');
+            // console.log(cells); // To check if cells are selected properly
+            let rowData = {};
+            // Include the hidden id
+            const idCell = row.querySelector('input[data-column="id"]') || row.querySelector('td[data-column="id"]');
+            if (idCell) {
+                rowData['id'] = idCell.value || idCell.innerText.trim();
+            }
+
+            cells.forEach(cell => {
+                let column = cell.getAttribute('data-column');
+                if (column) {
+                    rowData[column] = cell.innerText.trim();
+                }
+            });
+
+
+            console.log(rowData); // To verify each row's data is being captured
+            return rowData;
+        }).filter(rowData => Object.keys(rowData).length > 0); // Ensure we only add non-empty rows
+       
+        
+    // Check if updatedData has values
+    console.log(updatedData);
+    
+    if (updatedData.length > 0) {
+        console.log("updatedData > 0");
+    
+        // Send the data to the backend using POST request
+        fetch('/update', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedData)
+        })
+        .then(response => response.json())
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    } else {
+        alert("No data to update");
+    }
+}
+
+    </script>
+</body>
+</html>

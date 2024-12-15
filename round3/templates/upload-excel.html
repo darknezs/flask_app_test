@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Excel</title>
+    <link rel="stylesheet" href="static/nav.css">
+    <style>
+        
+/* File input button styling */
+#file-upload {
+    display: none; /* Hide the default file input */
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.custom-file-upload:hover {
+    background-color: #45a049;
+}
+
+/* Submit button styling */
+.submit-btn {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #006f98;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <div class="navbar">
+        <button onclick="document.location='/upload'">Upload</button>
+        <button onclick="document.location='/show'">Show</button>
+        <button onclick="document.location='/graph'">Graph</button>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content">
+        <h1>Upload Excel</h1>
+        <form action="/view" method="post" enctype="multipart/form-data">
+            <label for="file-upload" class="custom-file-upload">Choose Excel File</label>
+            <input id="file-upload" type="file" name="file" accept=".xls,.xlsx">
+            <input type="submit" value="Upload" class="submit-btn">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Table</title>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                margin: 20px 0;
+            }
+            th, td {
+                border: 1px solid black;
+                text-align: center;
+                padding: 8px;
+            }
+            th {
+                background-color: lightcoral;
+                font-weight: bold;
+            }
+            /* button {
+                padding: 5px 10px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 4px;
+            } */
+             button{
+                padding: 5px 10px;
+                background-color: tomato;
+                color: aliceblue;
+                border: none;
+                border-radius: 4px;
+             }
+
+        </style>
+    </head>
+    
+    <body>
+        <h2>Table</h2>
+        <table>
+            <tr>
+                <th>Resource</th>
+                <th>Helltide</th>
+                <th>IH</th>
+                <th>Nmd</th>
+                <th>Tree</th>
+                <th>Pit</th>
+                <th>Modify</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td><button onclick="updateRow('1')">Update</button></td>
+            </tr>
+            {% if data %}
+                {% for x in data %}
+                    <tr>
+                        <td>{{ x[1] }}</td>
+                        <td contenteditable="True" id="ht{{ x[0] }}">{{ x[2] }}</td>
+                        <td contenteditable="True" id="ih{{ x[0] }}">{{ x[3] }}</td>
+                        <td contenteditable="True" id="nmd{{ x[0] }}">{{ x[4] }}</td>
+                        <td contenteditable="True" id="tree{{ x[0] }}">{{ x[5] }}</td>
+                        <td contenteditable="True" id="pit{{ x[0] }}">{{ x[6] }}</td>
+                        <td><button onclick="updateRow('{{ x[0] }}')">Update</button></td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </table>
+    </body>
+<script>
+   async function updateRow(id){
+        ht = document.getElementById('ht'+id).textContent
+        ih = document.getElementById('ih'+id).textContent
+        nmd = document.getElementById('nmd'+id).textContent
+        tree = document.getElementById('tree'+id).textContent
+        pit = document.getElementById('pit'+id).textContent
+
+        console.log(ht,ih,nmd,tree,pit);
+
+        const res = await fetch('/update',{
+            method : 'POST',
+            headers :{"content-type":"application/json"},
+            body : JSON.stringify({id,ht,ih,nmd,tree,pit})
+        })
+        const data = await res.json()
+        if(res.ok){
+            alert('YES')
+        }else{
+            alert('nope')
+        }
+    }
+</script>
+</html>

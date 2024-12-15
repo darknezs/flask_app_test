@@ -1,0 +1,19 @@
+Flask
+- url_for //
+- Flask-WTF (Flask Forms) //
+- Flask-SQLAlchemy //
+- Blueprints //
+- Flask-Login (Authentication) //
+
+Pandas
+- read_csv() and to_csv() //
+- DataFrame.groupby() //
+- DataFrame.to_dict()  
+- DataFrame.plot()
+
+Matplotlib
+- plt.figure() //
+- savefig() //
+- Seaborn (Works on Top of Matplotlib)
+- nteractive Visualization with Plotly or mpld3
+- Annotate Charts

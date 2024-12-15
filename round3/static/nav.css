@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  /* Ensures padding and border are included in element's width and height */
+}
+/* Navigation bar container */
+.navbar {
+    background-color: #333;  /* Dark background */
+    overflow: hidden;        /* Clear floats */
+    position: fixed;         /* Stay at the top of the page */
+    top: 0;
+    width: 100%;
+    padding: 10px 0;
+    text-align: right;  /* Align buttons to the right */
+}
+
+/* Navbar buttons (links) styling */
+.navbar button {
+    color: white;                  /* White text */
+    background-color: #333;        /* Dark background (matches navbar) */
+    text-align: center;            /* Center text inside buttons */
+    padding: 10px 20px;            /* Padding for size */
+    margin: 0 10px;                /* Space between buttons */
+    border: none;                  /* Remove border */
+    font-size: 17px;               /* Button font size */
+    cursor: pointer;               /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Change color on hover */
+.navbar button:hover {
+    background-color: #575757;  /* Slightly lighter shade on hover */
+}
+
+/* Content styling */
+.content {
+    margin-top: 100px;            /* Space to prevent content from being hidden by the navbar */
+    text-align: center;           /* Center align content */
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #333;
+    font-size: 2em;
+}

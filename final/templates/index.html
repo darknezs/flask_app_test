@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 75vh;
+        }
+        .contentainer{
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgb(0,0,0,0.1);
+        }
+        button{
+            padding: 10px,20px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="contentainer">   
+        <h2>Choose!</h2> 
+        <button type="button" onclick="window.location='/upload'">upload</button>
+        <button type="button" onclick="window.location='/table'">table</button>
+        <button type="button" onclick="window.location='/graph'">graph</button>
+    </div>
+</body>
+</html>

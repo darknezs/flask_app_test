@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Input Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+  </head>
+  <body class="bg-light d-flex justify-content-center align-items-center vh-100"  >
+    <div class="container bg-white p-4 rounded shadow-sm" style="max-width: 400px" >
+      <h2 class="text-center text-primary mb-4">Input Form</h2>
+      <form action="/rawdata" method="POST">
+        <!-- Game Selection -->
+        <div class="form-group">
+          <label for="game" class="font-weight-bold">เลือกเกม:</label>
+          <select name="game" id="game" class="form-control">
+            <option value="GI">Genshin Impact</option>
+            <option value="HSR">Star Rail</option>
+            <option value="ZZZ">ZZZ</option>
+          </select>
+        </div>
+
+        <!-- Set Selection -->
+        <div class="form-group">
+          <label for="set" class="font-weight-bold">เลือกเซ็ต:</label>
+          <select name="set" id="set" class="form-control">
+            <option value="Archaic Petra">Archaic Petra</option>
+            <option value="Blizzard Strayer">Blizzard Strayer</option>
+            <option value="Bloodstained Chivalry">Bloodstained Chivalry</option>
+            <option value="Crimson Witch of Flames">Crimson Witch of Flames</option>
+            <option value="Deepwood Memories">Deepwood Memories</option>
+            <option value="Desert Pavilion Chronicle">Desert Pavilion Chronicle</option>
+            <option value="Echoes of an Offering">Echoes of an Offering</option>
+            <option value="Emblem of Severed Fate">Emblem of Severed Fate</option>
+            <option value="Flower of Paradise Lost">Flower of Paradise Lost</option>
+            <option value="Fragment of Harmonic Whimsy">Fragment of Harmonic Whimsy</option>
+            <option value="Gilded Dreams">Gilded Dreams</option>
+            <option value="Gladiator's Finale">Gladiator's Finale</option>
+            <option value="Golden Troupe">Golden Troupe</option>
+            <option value="Heart of Depth">Heart of Depth</option>
+            <option value="Husk of Opulent Dreams">Husk of Opulent Dreams</option>
+            <option value="Lavawalker">Lavawalker</option>
+            <option value="Maiden Beloved">Maiden Beloved</option>
+            <option value="Marechaussee Hunter">Marechaussee Hunter</option>
+            <option value="Nighttime Whispers in the Echoing Woods">Nighttime Whispers in the Echoing Woods</option>
+            <option value="Noblesse Oblige">Noblesse Oblige</option>
+            <option value="Nymph's Dream">Nymph's Dream</option>
+            <option value="Obsidian Codex">Obsidian Codex</option>
+            <option value="Ocean-Hued Clam">Ocean-Hued Clam</option>
+            <option value="Pale Flame">Pale Flame</option>
+            <option value="Retracing Bolide">Retracing Bolide</option>
+            <option value="Scroll of the Hero of Cinder City">Scroll of the Hero of Cinder City</option>
+            <option value="Shimenawa's Reminiscence">Shimenawa's Reminiscence</option>
+            <option value="Song of Days Past">Song of Days Past</option>
+            <option value="Tenacity of the Millelith">Tenacity of the Millelith</option>
+            <option value="Thundering Fury">Thundering Fury</option>
+            <option value="Thundersoother">Thundersoother</option>
+            <option value="Unfinished Reverie">Unfinished Reverie</option>
+            <option value="Vermillion Hereafter">Vermillion Hereafter</option>
+            <option value="Viridescent Venerer">Viridescent Venerer</option>
+            <option value="Vourukasha's Glow">Vourukasha's Glow</option>
+            <option value="Wanderer's Troupe">Wanderer's Troupe</option>
+          </select>
+        </div>
+
+        <!-- ชิ้น Selection -->
+        <div class="form-group">
+            <label for="arti_type" class="font-weight-bold">เลือกชิ้น:</label>
+            <select name="arti_type" id="arti_type" class="form-control">
+              <option value="Flower">Flower</option>
+              <option value="Feather">Feather</option>
+              <option value="Sand">Sand</option>
+              <option value="Goblet">Goblet</option>
+              <option value="Circlet">Circlet</option>
+            </select>
+          </div>
+
+        <!-- Main Status Selection -->
+        <div class="form-group">
+          <label for="main" class="font-weight-bold">เลือก Status หลัก:</label>
+          <select name="main" id="main" class="form-control">
+            <option value="HP">HP</option>
+            <option value="HP%">HP%</option>
+            <!-- <option value="DEF">DEF</option> -->
+            <option value="DEF%">DEF%</option>
+            <option value="ATK">ATK</option>
+            <option value="ATK%">ATK%</option>
+            <option value="EM">EM</option>
+            <option value="ER">ER</option>
+            <option value="CR">Crit Rate</option>
+            <option value="CD">Crit Damage</option>
+            <option value="HEAL">Healing Bonus</option> 
+            <option value="PHY">Phycical Damage Bonus</option>
+            <option value="Pyro">Pyro Damage Bonus</option>
+            <option value="Hydro">Hydro Damage Bonus</option>
+            <option value="Dend">Dendro Damage Bonus</option>
+            <option value="Elec">Electro Damage Bonus</option>
+            <option value="Anemo">Anemo Damage Bonus</option>
+            <option value="Cyro">Cyro Damage Bonus</option>
+            <option value="Geo">Geo Damage Bonus</option>
+
+
+
+          </select>
+        </div>
+  
+
+        <!-- Sub-Status Selection and Input -->
+        <div class="form-group">
+          <label for="sub1" class="font-weight-bold">เลือก Status ย่อย:</label>
+          <div class="form-row">
+            <div class="col">
+              <select name="sub1" id="sub1" class="form-control">
+                <option value="HP">HP</option>
+                <option value="HP%">HP%</option>
+                <option value="DEF">DEF</option>
+                <option value="DEF%">DEF%</option>
+                <option value="ATK">ATK</option>
+                <option value="ATK%">ATK%</option>
+                <option value="EM">EM</option>
+                <option value="ER">ER</option>
+                <option value="CR">Crit Rate</option>
+                <option value="CD">Crit Damage</option>
+              </select>
+            </div>
+            <div class="col"><input type="text" name="opset1"id="opset1"class="form-control"placeholder="Enter sub-status value"/></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-row">
+                <div class="col">
+                <select name="sub2" id="sub2" class="form-control">
+                    <option value="HP">HP</option>
+                    <option value="HP%">HP%</option>
+                    <option value="DEF">DEF</option>
+                    <option value="DEF%">DEF%</option>
+                    <option value="ATK">ATK</option>
+                    <option value="ATK%">ATK%</option>
+                    <option value="EM">EM</option>
+                    <option value="ER">ER</option>
+                    <option value="CR">Crit Rate</option>
+                    <option value="CD">Crit Damage</option>
+                </select>
+                </div>
+                <div class="col"><input type="text" name="opset2"id="opset2"class="form-control"placeholder="Enter sub-status value"/></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-row">
+                <div class="col">
+                <select name="sub3" id="sub3" class="form-control">
+                    <option value="HP">HP</option>
+                    <option value="HP%">HP%</option>
+                    <option value="DEF">DEF</option>
+                    <option value="DEF%">DEF%</option>
+                    <option value="ATK">ATK</option>
+                    <option value="ATK%">ATK%</option>
+                    <option value="EM">EM</option>
+                    <option value="ER">ER</option>
+                    <option value="CR">Crit Rate</option>
+                    <option value="CD">Crit Damage</option>
+                </select>
+                </div>
+                <div class="col"><input type="text" name="opset3"id="opset3"class="form-control"placeholder="Enter sub-status value"/></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-row">
+                    <div class="col">
+                    <select name="sub4" id="sub4" class="form-control">
+                        <option value="HP">HP</option>
+                        <option value="HP%">HP%</option>
+                        <option value="DEF">DEF</option>
+                        <option value="DEF%">DEF%</option>
+                        <option value="ATK">ATK</option>
+                        <option value="ATK%">ATK%</option>
+                        <option value="EM">EM</option>
+                        <option value="ER">ER</option>
+                        <option value="CR">Crit Rate</option>
+                        <option value="CD">Crit Damage</option>
+                    </select>
+                    </div>
+                    <div class="col"><input type="text" name="opset4"id="opset4"class="form-control"placeholder="Enter sub-status value"/></div>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-success" type="button" onclick="document.location='/show'" >Show</button>
+      </form>
+    </div> 
+  </body>
+</html>
